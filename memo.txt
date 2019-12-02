@@ -1,0 +1,6 @@
+    url = "https://glosbe.com/gapi/translate?from="ja
+        + from_lang + "&dest=" + dest_lang \
+        + "&format=json&phrase=" + phrase + "&pretty=true"
+
+
+        https://glosbe.com/gapi/translate?from="+fromen=to+"&format=json&phrase="+$scope.text+"&pretty=true"

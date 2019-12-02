@@ -1,0 +1,182 @@
+@import url("https://fonts.googleapis.com/css?family=M+PLUS+1p");
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap");
+/* Shadow Elemtns from Tailwind css */
+.shadow {
+  -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+          box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.shadow-md {
+  -webkit-box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+          box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.shadow-lg {
+  -webkit-box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+          box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.shadow-xl {
+  -webkit-box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+          box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.shadow-2xl {
+  -webkit-box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+          box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.shadow-inner {
+  -webkit-box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+          box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+}
+
+.shadow-outline {
+  -webkit-box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+          box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+}
+
+/* Diplay Elements */
+.d-b {
+  display: block;
+}
+
+.d-ib {
+  display: inline-block;
+}
+
+.d-f {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+/* margin */
+.mx-auto {
+  margin: 0 auto;
+}
+
+.m-1 {
+  margin: 1rem;
+}
+
+.m-2 {
+  margin: 2rem;
+}
+
+.m-3 {
+  margin: 3rem;
+}
+
+.m-4 {
+  margin: 4rem;
+}
+
+.mt-5 {
+  margin-top: 5rem;
+}
+
+.mt-4 {
+  margin-top: 4rem;
+}
+
+.mt-3 {
+  margin-top: 3rem;
+}
+
+/* text-align */
+.t-c {
+  text-align: center;
+}
+
+.t-l {
+  text-align: left;
+}
+
+.t-r {
+  text-align: right;
+}
+
+html,
+body {
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 62.5%;
+}
+
+.header {
+  background-color: #fff;
+  padding: 1rem 0.8rem;
+  -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+          box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  position: fixed;
+  width: 100%;
+}
+
+.header__wrapper {
+  max-width: 960px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 0 auto;
+}
+
+.header__title {
+  font-size: 2rem;
+  color: #63A8FF;
+}
+
+.header__btn, .form__btn {
+  padding: 1rem;
+  border-radius: .5rem;
+  color: #fff;
+  background-color: #63A8FF;
+  font-weight: 600;
+  font-size: 1.6rem;
+}
+
+.hero, .app {
+  padding: 5.6rem 2rem;
+}
+
+.hero__wrapper, .app__wrapper {
+  margin: 0 auto;
+  text-align: center;
+  max-width: 960px;
+}
+
+.hero__title {
+  margin-top: 7rem;
+  font-size: 4.2rem;
+  font-weight: 700;
+}
+
+.hero__img {
+  width: 500px;
+  height: auto;
+}
+
+.hero__text {
+  font-size: 2.2rem;
+}
+
+.table__row > th {
+  font-size: 2rem;
+}
+
+.table__row > td {
+  font-size: 1.5rem;
+}
+
+.form__input {
+  width: 400px;
+  height: 32px;
+  padding-left: 1rem;
+  font-size: 1.6rem;
+}
+/*# sourceMappingURL=index.css.map */
