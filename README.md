@@ -2,5 +2,6 @@
 
 > 単語学習ウェブアプリ  
 
-動作確認URL: https://tango-dojo.netlify.com/
+バリデーションをしていないので、辞書にない単語を入力するとエラーがおきます。
+動作確認 URL: https://tango-dojo.netlify.com/
 
