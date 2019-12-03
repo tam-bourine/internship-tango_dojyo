@@ -2,39 +2,31 @@
   <table class="table mx-auto">
     <h2>{{this.user}}</h2>
     <tr class="table__row">
-      <th>単語</th>
-      <th>定義</th>
+      <th class="table__head">単語</th>
+      <th class="table__head">定義</th>
     </tr>
     <tr v-for="word in this.words" :key="word.word" class="table__row">
-      <td>{{word.word}}</td>
-      <td>{{word.def}}</td>
+      <td class="table__data">{{word.word}}</td>
+      <td class="table__data">{{word.def}}</td>
     </tr>
 
     <button @click.prevent="checker()">メソッドチェッカー</button>
   </table>
 </template>
 
+<style lang="scss" scoped>
+</style>
 <script>
 import firebase from "firebase";
 
 export default {
   data() {
     return {
+      //holds list of word
       words: this.$store.getters.getWords,
-      user: this.$store.getters.getUser,
-      wordsList: [],
-      wordsLength: 0,
-      dumyWords: [
-        {
-          word: "hunger",
-          def: "お腹が減ったぞーい"
-        },
 
-        {
-          word: "eat",
-          def: "食べるぞーい"
-        }
-      ]
+      //holds list of users
+      user: this.$store.getters.getUser
     };
   },
 
@@ -45,16 +37,16 @@ export default {
   },
 
   computed: {
+    //To watch getUpdated variables
     updated: function() {
       return this.$store.getters.getUpdated;
     }
   },
 
+  //if word was add/delete/editted update value of updated/words
   watch: {
     updated() {
       this.$nextTick(() => {
-        console.log("updated has been updated from form post");
-        console.log("value was true");
         this.fetchDataFirebase();
         this.$store.commit("updateUpdated", false);
         this.words = this.$store.getters.getWords;
@@ -63,41 +55,37 @@ export default {
   },
 
   methods: {
-    /* Fetch all words from firebase store it in vuex  */
+    //fetch all searched words from firebase firestore.
+    //store it in vuex state words.
     async fetchDataFirebase() {
-      //reset list
-      console.log("called");
-      //this.$store.commit("resetWords", []);
-      //reference to vue
+      //referemce to vue object.
       let self = this;
-      let testList = [];
+
+      //temporary list to hold firebase data.
+      let tempList = [];
+
       firebase
         .firestore()
         .collection("words")
         .get()
         .then(function(querySnapshot) {
           querySnapshot.forEach(function(doc) {
-            testList.push(doc.data());
-            console.log("1");
+            tempList.push(doc.data());
           });
         })
         .then(function() {
-          console.log(2);
-          console.log(testList);
-
           self.$store.commit("updateUpdated", false);
-          self.$store.commit("updateWords", testList);
+          self.$store.commit("updateWords", tempList);
           self.words = self.$store.getters.getWords;
         });
       //this.$store.commit("updateWords", tempList);
     },
 
+    //function tester
     checker() {
-      this.words = this.$store.getters.getWords;
+      console.log(this.$store.getters.getWordsLength);
     }
   }
 };
 </script>
 
-<style lang="scss" scoped>
-</style>

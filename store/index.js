@@ -7,6 +7,8 @@ export const state = () => ({
   //true/if user has added/deleted/editted words list
   updated: false
 
+
+
 });
 
 //mutations to change value in state.
@@ -64,14 +66,11 @@ export const getters = {
     return state.updated;
   },
 
-  //
+  //return length of words
   getWordsLength(state) {
-    let count = 0;
-    let i = '';
-    for (i in state.words) {
-      count++;
-    }
-    return count;
+
+    return state.words.length;
+
   }
 
 

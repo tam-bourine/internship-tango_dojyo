@@ -6,6 +6,7 @@
       <Table />
       <button @click.prevent="fetchDataFirebase()">テストフェッチメソッド</button>
       <button @click.prevent="testRun()">テストランメソッド</button>
+      <nuxt-link to="/quiz">クイズを受けてみる</nuxt-link>
     </div>
   </section>
 </template>
