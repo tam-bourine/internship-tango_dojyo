@@ -3,6 +3,7 @@
     <div class="d-ib form__wrapper mx-auto">
       <input type="text" placeholder="検索したい単語を入力してね(°▽°)" v-model="word" class="form__input" />
       <a class="form__btn" @click.prevent="fetchWordDefinition()">検索する</a>
+      <h2>{{this.updated}}</h2>
     </div>
   </form>
 </template>
@@ -14,7 +15,7 @@ export default {
     return {
       word: "",
       wordDef: "",
-      user: this.$store.state.user
+      updated: this.$store.getters.getUpdated
     };
   },
 
@@ -33,6 +34,7 @@ export default {
 
       this.wordDef = definition[0].mean;
       this.addWord(this.word, this.wordDef);
+      this.$store.commit("updateUpdated", true);
       this.word = "";
     },
 
@@ -46,6 +48,12 @@ export default {
           word: word,
           def: def
         });
+    }
+  },
+  watch: {
+    updated: function() {
+      console.log("updatedの値が変更されたよ!!");
+      this.updated = true;
     }
   }
 };

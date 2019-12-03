@@ -9,7 +9,8 @@
       <td>{{word.word}}</td>
       <td>{{word.def}}</td>
     </tr>
-    <button @click.prevent="modifyWord()">words モディファイやー</button>
+
+    <button @click.prevent="checker()">メソッドチェッカー</button>
   </table>
 </template>
 
@@ -22,42 +23,77 @@ export default {
       words: this.$store.getters.getWords,
       user: this.$store.getters.getUser,
       wordsList: [],
-      wordsLength: 0
+      wordsLength: 0,
+      dumyWords: [
+        {
+          word: "hunger",
+          def: "お腹が減ったぞーい"
+        },
+
+        {
+          word: "eat",
+          def: "食べるぞーい"
+        }
+      ]
     };
   },
 
   created() {
     this.fetchDataFirebase();
+    this.words = this.$store.getters.getWords;
+    console.log(this.words, "created ");
+  },
 
-    /* 
-   this.wordsLength = this.$store.getters.getWordsLength;
-    */
+  computed: {
+    updated: function() {
+      return this.$store.getters.getUpdated;
+    }
   },
 
   watch: {
-    words: function() {
-      console.log("words has been modified");
+    updated() {
+      this.$nextTick(() => {
+        console.log("updated has been updated from form post");
+        console.log("value was true");
+        this.fetchDataFirebase();
+        this.$store.commit("updateUpdated", false);
+        this.words = this.$store.getters.getWords;
+      });
     }
   },
 
   methods: {
     /* Fetch all words from firebase store it in vuex  */
-    fetchDataFirebase() {
+    async fetchDataFirebase() {
+      //reset list
+      console.log("called");
+      //this.$store.commit("resetWords", []);
+      //reference to vue
       let self = this;
-      let listing = [];
+      let testList = [];
       firebase
         .firestore()
         .collection("words")
         .get()
         .then(function(querySnapshot) {
           querySnapshot.forEach(function(doc) {
-            self.$store.commit("addWords", doc.data());
+            testList.push(doc.data());
+            console.log("1");
           });
+        })
+        .then(function() {
+          console.log(2);
+          console.log(testList);
+
+          self.$store.commit("updateUpdated", false);
+          self.$store.commit("updateWords", testList);
+          self.words = self.$store.getters.getWords;
         });
+      //this.$store.commit("updateWords", tempList);
     },
 
-    modifyWord() {
-      alert(this.$store.getters.getWordsLength);
+    checker() {
+      this.words = this.$store.getters.getWords;
     }
   }
 };
