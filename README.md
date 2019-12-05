@@ -1,6 +1,7 @@
 # tango-dojo
 
-> Study english word!
+過去に自分が検索した単語から自動で問題を作成してくれるウェブサービです。  
+動作確認URL:https://tango-dojo.netlify.com/app
 
 ## Build Setup
 
